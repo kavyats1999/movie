@@ -1,0 +1,65 @@
+<div class="container">
+    <nav class="navbar bg-body-white">
+        <div class="m-4 d-flex text-align-right">
+            <img src="https://seeklogo.com/images/G/golden-movie-studio-logo-5979024D63-seeklogo.com.png" height="70"
+                width="70" alt="">
+            <span class="navbar-brand mb-0 h1 ms-5">Movie Club</span>
+           <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+                <div class="row">
+    
+                    <div class="col-lg-10">
+    
+                        <input  style="width: 200px;" type="text" class="form-control " formControlName="movieName" placeholder="Enter Movie name here">
+                    </div>
+                    <div class="col-lg-2">
+    
+                        <button class="btn btn-md ms-5">search</button>
+                    </div>
+    
+    
+                </div>
+           </form>
+
+           <div class="row mt-5">
+                 <div class="col-lg-4" *ngFor="let s of searchResult">
+                    <div class="row">
+                        <div class="col-lg-3">
+                      <img src="http://image.tmdb.org/t/p/original/{{s.backdrop_path}}" alt="">
+                        </div>
+                        <div class="col-lg-9">
+                             <h5>{{s.original_title}}</h5>
+                             
+                        </div>
+                    </div>
+
+                 </div>
+           </div>
+        </div>
+
+
+    </nav>
+
+
+    <div class="row">
+
+        <div *ngFor="let movies of allMovies" class="col-lg-3 ">
+            <div class="card" style="width: 18rem;">
+                <img src="http://image.tmdb.org/t/p/original/{{movies.backdrop_path}}" routerLink="/view/{{movies.id}}"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title">Title:{{movies.original_title}}</h4>
+                    <!-- <p class="card-text">Overview:{{movies.overview}}</p>
+                    <h5>Release Date:{{movies.release_date}}</h5> -->
+                    <a routerLink="/view/{{movies.id}}" class="btn btn-primary">View More</a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
